@@ -42,14 +42,7 @@ public class Customer {
             System.out.println("Account not found");
             return;
         }
-
-        if (account instanceof Savings savings) {
-            savings.withdrawFromSavings(amount);
-
-        } else if (account instanceof Current current) {
-            current.withdrawFromCurrent(amount);
-        }
-
+        account.withdraw(amount);
     }
 
     public void deposit(Account account, double amount) {
@@ -58,12 +51,7 @@ public class Customer {
             return;
         }
 
-        if (account instanceof Savings savings) {
-            savings.depositIntoSavings(amount);
-
-        } else if (account instanceof Current current) {
-            current.depositIntoCurrent(amount);
-        }
+        account.deposit(amount);
     }
 
     public void printCustomer() {

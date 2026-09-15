@@ -3,7 +3,7 @@ package bank;
 import java.time.LocalDate;
 import java.util.LinkedList;
 
-public class Account {
+public abstract class Account {
 
     private String accountNumber;
     private double balance;
@@ -85,5 +85,9 @@ public class Account {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    public abstract void withdraw(double amount);
+
+    public abstract void deposit(double amount);
 
 }

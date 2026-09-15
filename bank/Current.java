@@ -14,7 +14,17 @@ public class Current extends Account {
         this.interestRate = 0.05;
     }
 
-    public void withdrawFromCurrent(double amount) {
+    @Override
+    public void deposit(double amount) {
+        depositIntoCurrent(amount);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        withdrawFromCurrent(amount);
+    }
+
+    private void withdrawFromCurrent(double amount) {
         int oLimit = buildOverdraftLimit();
         double balance = super.getBalance();
         String acctNumber = super.getAccountNumber();
@@ -57,7 +67,7 @@ public class Current extends Account {
         """, acctNumber, amount, newBalance, date);
     }
 
-    public void depositIntoCurrent(double amount) {
+    private void depositIntoCurrent(double amount) {
         String acctNumber = super.getAccountNumber();
         double balance = super.getBalance();
         LocalDate date = LocalDate.now();

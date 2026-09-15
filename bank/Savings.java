@@ -7,12 +7,7 @@ public class Savings extends Account {
     private double interestRate;
     private int withdrawalLimit;
     private int depositLimit;
-    private int accountTier;
-    private String accountStatus;
-    private boolean isOnHold;
-    private String transactionType;
-    private String withdrawalType;
-    private String depositType;
+    private Integer accountTier;
 
     public Savings(double acctBalance, int accountTier) {
         super(acctBalance, "Savings");
@@ -20,7 +15,17 @@ public class Savings extends Account {
         this.accountTier = accountTier;
     }
 
-    public void depositIntoSavings(double amount) {
+    @Override
+    public void deposit(double amount) {
+        depositIntoSavings(amount);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        withdrawFromSavings(amount);
+    }
+
+    private void depositIntoSavings(double amount) {
         int dLimit = buildDepositLimit();
         if (amount > dLimit) {
             System.out.println("Deposit amount exceeds limit");
@@ -43,7 +48,7 @@ public class Savings extends Account {
         """, acctNumber, amount, newBalance, date);
     }
 
-    public void withdrawFromSavings(double amount) {
+    private void withdrawFromSavings(double amount) {
         int wLimit = buildWithdrawalLimit();
         if (amount > wLimit) {
             System.out.println("Withdrawal amount exceeds limit");
